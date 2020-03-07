@@ -18,7 +18,8 @@ def login(connection, verbose=False):
     response = requests.post(url=connection.base_url + '/auth/login',
                              data={'username': connection.username,
                                    'password': connection.password,
-                                   'loginMode': connection.login_mode},
+                                   'loginMode': connection.login_mode,
+                                   'applicationType': connection.application_code},
                              verify=connection.ssl_verify)
     if verbose:
         print(response.url)

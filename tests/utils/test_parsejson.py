@@ -1,6 +1,5 @@
 import json
 import unittest
-
 from mstrio.utils.parsejson import parsejson
 
 
@@ -10,7 +9,7 @@ def get_response():
     return response
 
 
-class TestFormjson(unittest.TestCase):
+class TestParsejson(unittest.TestCase):
 
     def test_parsejson_columns(self):
         test_df = parsejson(response=get_response())
@@ -21,6 +20,7 @@ class TestFormjson(unittest.TestCase):
         df = parsejson(response=get_response())
         df_sums = df.filter(items=['Petal.Length', 'Petal.Width', 'Sepal.Length', 'Sepal.Width']).sum(axis=0)
         self.assertAlmostEqual(sum(list(df_sums.values)), 2078.7, places=4)
+
 
 if __name__ == '__main__':
     unittest.main()
